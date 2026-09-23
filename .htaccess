@@ -1,0 +1,48 @@
+# budisovaci.cz — nastavení pro Apache (hosting Czechia.com)
+
+# --- HTTPS + jedna adresa bez www ---
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://budisovaci.cz%{REQUEST_URI} [L,R=301]
+
+# --- vlastní stránka 404 ---
+ErrorDocument 404 /404.html
+
+# --- zdrojové a interní soubory nikdy nevydávat ---
+RedirectMatch 404 ^/(_zaloha|Zdrojove_materialy)(/|$)
+<FilesMatch "\.(md|docx|ai|bak)$">
+  Require all denied
+</FilesMatch>
+
+# --- správné MIME typy (PDF.js je ES modul .mjs) ---
+AddType text/javascript .mjs
+AddType font/woff2 .woff2
+AddType image/webp .webp
+AddType application/manifest+json .webmanifest
+
+# --- komprese ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+
+# --- cache: média a fonty dlouho, HTML krátce ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/javascript "access plus 30 days"
+  ExpiresByType application/pdf "access plus 7 days"
+</IfModule>
+
+# --- základní bezpečnostní hlavičky ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>

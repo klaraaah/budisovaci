@@ -1,0 +1,12 @@
+# Interni podklady - nenahravat na verejny web/repo (viz README.md)
+/Zdrojove_materialy/
+/_zaloha/
+/Claude outputs/
+/js/
+city.mp4
+hero-budisov.jpg
+foto-kandidati/*.jpg
+dokumenty/letak-budisovaci.pdf
+*.md
+*.docx
+~$*
