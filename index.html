@@ -536,12 +536,28 @@ form input:focus,form textarea:focus{outline:none;border-color:var(--brand)}
 form input.invalid,form textarea.invalid{border-color:#B3261E}
 form input.invalid:focus,form textarea.invalid:focus{border-color:#B3261E}
 form textarea{min-height:120px;resize:vertical}
-.form-ok{display:none;margin-top:var(--s4);font-weight:600;color:var(--brand)}
-.form-error{display:none;margin-top:var(--s4);font-weight:600;color:#B3261E}
+.form-ok,.form-error{display:none;align-items:center;gap:10px;margin-top:var(--s5);
+  padding:14px var(--s5);border-radius:var(--r);font-weight:600;font-size:.95rem;line-height:1.4}
+.form-ok.show,.form-error.show{display:flex}
+.form-ok{background:color-mix(in srgb, var(--brand) 10%, var(--paper));
+  border:1px solid color-mix(in srgb, var(--brand) 35%, var(--line));color:var(--brand-d)}
+.form-error{background:color-mix(in srgb, #B3261E 8%, var(--paper));
+  border:1px solid color-mix(in srgb, #B3261E 30%, var(--line));color:#B3261E}
+.form-ok::before,.form-error::before{display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;color:#fff;font-size:.78rem;font-weight:700;flex:0 0 auto}
+.form-ok::before{content:"\2713";background:var(--brand)}
+.form-error::before{content:"!";background:#B3261E}
+.form-ok.show,.form-error.show{animation:formMsgIn .4s ease}
+@keyframes formMsgIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .form-note{margin-top:var(--s4);font-size:.8rem;color:var(--ink-3);font-family:var(--mono);letter-spacing:.03em}
 /* honeypot – schované mimo obrazovku (ne display:none), aby ho vyplnili jen boti */
 .hp-field{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-form button[disabled]{opacity:.6;cursor:not-allowed}
+form button[disabled]{opacity:.75;cursor:not-allowed}
+form button[type=submit].is-loading{position:relative}
+form button[type=submit] .btn-spin{display:inline-block;width:14px;height:14px;margin-right:8px;
+  border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;vertical-align:-2px;
+  animation:btnspin .7s linear infinite}
+@keyframes btnspin{to{transform:rotate(360deg)}}
 
 /* ============ FOOTER ============ */
 footer{background:var(--ink-bg);color:#fff;padding:var(--s9) 0 var(--s6)}
@@ -1854,13 +1870,25 @@ window.GOOGLE_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbybz3-_Gp
     if (field) field.addEventListener("input", function () { field.classList.remove("invalid"); });
   });
 
-  function showOk() { if (okMsg) okMsg.style.display = "block"; if (errMsg) errMsg.style.display = "none"; }
-  function showErr() { if (errMsg) errMsg.style.display = "block"; if (okMsg) okMsg.style.display = "none"; }
+  function showOk() {
+    if (okMsg) {
+      okMsg.classList.add("show");
+      if (okMsg.scrollIntoView) okMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    if (errMsg) errMsg.classList.remove("show");
+  }
+  function showErr() {
+    if (errMsg) {
+      errMsg.classList.add("show");
+      if (errMsg.scrollIntoView) errMsg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    if (okMsg) okMsg.classList.remove("show");
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (errMsg) errMsg.style.display = "none";
-    if (okMsg) okMsg.style.display = "none";
+    if (errMsg) errMsg.classList.remove("show");
+    if (okMsg) okMsg.classList.remove("show");
 
     // Honeypot — pokud je vyplněný, jde o robota. Formulář potichu zahodíme,
     // beze slova návštěvníkovi (aby robot nezískal zpětnou vazbu).
@@ -1899,22 +1927,31 @@ window.GOOGLE_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbybz3-_Gp
     data.set("souhlas_novinky", (souhlasNovinky && souhlasNovinky.checked) ? "1" : "");
     data.set("ts", String(formShownAt));
 
-    if (btn) { btn.disabled = true; btn.innerHTML = "Odesílám…"; }
+    if (btn) { btn.disabled = true; btn.classList.add("is-loading"); btn.innerHTML = '<span class="btn-spin" aria-hidden="true"></span>Odesílám…'; }
+
+    // Odeslání může (zejména při "studeném startu" Google Apps Scriptu) chvíli
+    // trvat — po pár vteřinách dáme návštěvníkovi vědět, že se pořád pracuje,
+    // ať to nepůsobí jako zaseknuté tlačítko.
+    var stillWaiting = setTimeout(function () {
+      if (btn) btn.innerHTML = '<span class="btn-spin" aria-hidden="true"></span>Ještě chvilku…';
+    }, 5000);
 
     fetch(endpoint, { method: "POST", mode: "no-cors", body: data })
       .then(function () {
         // no-cors = odpověď je "opaque" a nedá se přečíst; úspěch poznáme
         // podle toho, že se fetch vůbec nezamítl (síťová chyba by šla do catch).
+        clearTimeout(stillWaiting);
+        if (btn) { btn.classList.remove("is-loading"); btn.innerHTML = "Odesláno \u2713"; }
         showOk();
         if (window.trackEvent) window.trackEvent("generate_lead", { form: "kontakt" });
         form.reset();
+        setTimeout(function () { if (btn) { btn.disabled = false; btn.innerHTML = btnLabel; } }, 2500);
       })
       .catch(function (err) {
+        clearTimeout(stillWaiting);
         console.warn("Kontaktní formulář: odeslání selhalo.", err);
         showErr();
-      })
-      .finally(function () {
-        if (btn) { btn.disabled = false; btn.innerHTML = btnLabel; }
+        if (btn) { btn.disabled = false; btn.classList.remove("is-loading"); btn.innerHTML = btnLabel; }
       });
   });
 })();
