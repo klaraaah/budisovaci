@@ -269,9 +269,8 @@ header.scrolled .nav{height:66px}
 .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
 .btn-ghost:hover{background:#fff;color:var(--ink-bg);border-color:#fff}
 .hero-facts{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad) var(--s6)}
-.hero-facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.2)}
+.hero-facts ul{list-style:none;display:inline-flex;border-top:1px solid rgba(255,255,255,.2)}
 .hero-facts li{padding:22px 24px 4px 0}
-.hero-facts li+li{padding-left:24px;border-left:1px solid rgba(255,255,255,.14)}
 .hero-facts b{display:block;font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
 .hero-facts span{display:block;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 .hero-facts li.is-count b{color:#6FC3F2}
@@ -596,10 +595,7 @@ footer ul a:hover{color:var(--brand)}
   .hero-copy{padding:var(--s8) var(--pad) var(--s7)}
   .hero-copy-inner{max-width:none}
   .hero-video,.hero-yt,.hero-pause{display:none}
-  .hero-facts ul{grid-template-columns:1fr 1fr}
-  .hero-facts li,.hero-facts li+li{padding:18px 12px 10px 0;border-left:0}
-  .hero-facts li:nth-child(even){padding-left:16px;border-left:1px solid rgba(255,255,255,.14)}
-  .hero-facts li:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
+  .hero-facts li{padding:18px 12px 10px 0}
   .prio,.cands,.news,.prog,.contact{padding:var(--s9) 0}
   .prio-grid{grid-template-columns:1fr}
   .cand-row{row-gap:var(--s7)}.cand{grid-column:span 12}.cand.offset{margin-top:0}
@@ -787,9 +783,6 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
   <div class="hero-facts">
     <ul>
       <li class="is-count" id="hero-countdown"><b>9.–10. 10.</b><span>volby 2026</span></li>
-      <li><b>2</b><span>kandidátky</span></li>
-      <li><b>30</b><span>sousedů na kandidátkách</span></li>
-      <li><b>10</b><span>oblastí programu</span></li>
     </ul>
   </div>
 </section>
@@ -1390,10 +1383,10 @@ window.SITE_MEDIA = {
     ["Kontakt", "E-mail: info@budisovaci.cz · Telefon: +420 602 702 803"],
     ["Jaké údaje a proč", "Z kontaktního formuláře zpracováváme jméno a příjmení, e-mail a text zprávy, abychom vám mohli odpovědět (souhlas dle čl. 6 odst. 1 písm. a) GDPR). Pokud zaškrtnete zasílání novinek, budeme váš e-mail používat i k informování o kampani. Souhlas můžete kdykoli odvolat e-mailem na info@budisovaci.cz."],
     ["Doba uchovávání", "Údaje z formuláře uchováváme po dobu kampaně a nejdéle 6 měsíců po volbách, poté je smažeme. Při odvolání souhlasu je smažeme bez zbytečného odkladu."],
-    ["Zpracovatelé", "Odeslané údaje se ukládají do tabulky Google (Google Ireland Ltd.). Web běží na hostingu Czechia.com, který vede běžné technické záznamy o přístupech. Jiným osobám údaje nepředáváme ani neprodáváme."],
+    ["Zpracovatelé", "Odeslané údaje se ukládají do tabulky Google (Google Ireland Ltd.). Web běží na GitHub Pages (GitHub, Inc.), který vede běžné technické záznamy o přístupech. Jiným osobám údaje nepředáváme ani neprodáváme."],
     ["Cookies a měření návštěvnosti", "Bez vašeho souhlasu web nepoužívá žádné sledovací cookies. Pokud měření povolíte, použijeme Google Analytics 4 (Google Ireland Ltd.) k anonymní statistice návštěvnosti; cookies _ga ukládáme nejdéle 14 měsíců. Svou volbu můžete kdykoli změnit odkazem „Nastavení cookies“ v patičce. Písma jsou uložená přímo na tomto webu, nenačítají se od třetích stran."],
     ["Vaše práva", "Máte právo na přístup ke svým údajům, jejich opravu, výmaz, omezení zpracování, přenositelnost a právo vznést námitku. Máte také právo podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.gov.cz)."],
-    ["Poslední aktualizace", "23. 9. 2026"]
+    ["Poslední aktualizace", "24. 9. 2026"]
   ];
   var TRANSPARENCY_BLOCKS = [
     ["Identifikace zadavatele", "Budišováci, z. s., sdružení nezávislých kandidátů pro volby do zastupitelstva městyse Budišov 2026, Budišov, okres Třebíč."],
@@ -2004,7 +1997,11 @@ window.GOOGLE_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbybz3-_Gp
   var start = new Date("2026-10-09T14:00:00+02:00"), end = new Date("2026-10-10T14:00:00+02:00"), now = new Date();
   var b = li.querySelector("b"), s = li.querySelector("span");
   if (now < start) {
-    var d = Math.ceil((start - now) / 86400000);
+    // Počítáme rozdíl kalendářních dnů (půlnoc k půlnoci), ne přesných hodin —
+    // jinak by kvůli 14:00 startu voleb číslo "poskakovalo" o jeden den navíc.
+    var today0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var start0 = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    var d = Math.round((start0 - today0) / 86400000);
     b.textContent = String(d);
     s.textContent = (d === 1 ? "den" : (d >= 2 && d <= 4 ? "dny" : "dní")) + " do voleb";
   } else if (now < end) {
