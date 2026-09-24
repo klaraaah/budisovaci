@@ -513,6 +513,8 @@ form label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing
 form input,form textarea{width:100%;background:var(--paper);border:1px solid var(--line-2);border-radius:var(--r);
   font-family:var(--sans);font-size:1.05rem;color:var(--ink);padding:14px 16px;transition:border-color .25s}
 form input:focus,form textarea:focus{outline:none;border-color:var(--brand)}
+form input.invalid,form textarea.invalid{border-color:#B3261E}
+form input.invalid:focus,form textarea.invalid:focus{border-color:#B3261E}
 form textarea{min-height:120px;resize:vertical}
 .form-ok{display:none;margin-top:var(--s4);font-weight:600;color:var(--brand)}
 .form-error{display:none;margin-top:var(--s4);font-weight:600;color:#B3261E}
@@ -1085,9 +1087,9 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
       </div>
       <form class="rv" id="contact-form" novalidate>
         <p class="form-intro">Chcete dostávat novinky z první ruky, nebo se stát naším podporovatelem? Nechte nám na sebe kontakt.</p>
-        <div class="fld"><label for="cn">Jméno a příjmení</label><input id="cn" name="jmeno" type="text" placeholder="Jan Novák" required></div>
+        <div class="fld"><label for="cn">Jméno a příjmení</label><input id="cn" name="jmeno" type="text" placeholder="Jan Novák" minlength="5" required></div>
         <div class="fld"><label for="ce">e-mail</label><input id="ce" name="email" type="email" placeholder="vas@email.cz" required></div>
-        <div class="fld"><label for="cz">Zpráva</label><textarea id="cz" name="zprava" rows="4" placeholder="Napište nám, s čím vám můžeme pomoct…" required></textarea></div>
+        <div class="fld"><label for="cz">Zpráva</label><textarea id="cz" name="zprava" rows="4" placeholder="Napište nám, s čím vám můžeme pomoct… (nepovinné)"></textarea></div>
         <label class="chk"><input type="checkbox" id="cnl" name="souhlas" required> Souhlasím se zpracováním výše uvedených osobních údajů sdružením Budišováci za účelem odpovědi na můj dotaz. Souhlas mohu kdykoli odvolat.</label>
         <label class="chk"><input type="checkbox" id="cnw" name="souhlas_novinky"> Chci také dostávat e-mailem novinky o kampani (nepovinné).</label>
         <!-- Honeypot proti spamu: pro lidi neviditelné (viz .hp-field v CSS), boti
@@ -1313,9 +1315,8 @@ window.SITE_MEDIA = {
   /* ---------- Ochrana osobních údajů (GDPR) + Transparentnost financování ----------
      Texty jsou návrh — nechte je zkontrolovat osobou odpovědnou za kandidaturu
      (ideálně doplnit jméno konkrétní odpovědné osoby jako správce údajů). */
-  // TODO KLIENT: doplnit jméno fyzické osoby (např. zmocněnce) jako správce
   var GDPR_BLOCKS = [
-    ["Správce osobních údajů", "Budišováci – sdružení nezávislých kandidátů pro volby do zastupitelstva městyse Budišov 2026, Budišov, okres Třebíč."],
+    ["Správce osobních údajů", "Budišováci, z. s., sdružení nezávislých kandidátů pro volby do zastupitelstva městyse Budišov 2026, Budišov, okres Třebíč."],
     ["Kontakt", "E-mail: info@budisovaci.cz · Telefon: +420 602 702 803"],
     ["Jaké údaje a proč", "Z kontaktního formuláře zpracováváme jméno a příjmení, e-mail a text zprávy, abychom vám mohli odpovědět (souhlas dle čl. 6 odst. 1 písm. a) GDPR). Pokud zaškrtnete zasílání novinek, budeme váš e-mail používat i k informování o kampani. Souhlas můžete kdykoli odvolat e-mailem na info@budisovaci.cz."],
     ["Doba uchovávání", "Údaje z formuláře uchováváme po dobu kampaně a nejdéle 6 měsíců po volbách, poté je smažeme. Při odvolání souhlasu je smažeme bez zbytečného odkladu."],
@@ -1324,11 +1325,11 @@ window.SITE_MEDIA = {
     ["Vaše práva", "Máte právo na přístup ke svým údajům, jejich opravu, výmaz, omezení zpracování, přenositelnost a právo vznést námitku. Máte také právo podat stížnost u Úřadu pro ochranu osobních údajů (www.uoou.gov.cz)."],
     ["Poslední aktualizace", "23. 9. 2026"]
   ];
-  // TODO KLIENT: doplnit, kdo kampaň financuje (případně orientační rozpočet)
   var TRANSPARENCY_BLOCKS = [
-    ["Identifikace zadavatele", "Budišováci – sdružení nezávislých kandidátů pro volby do zastupitelstva městyse Budišov 2026, Budišov, okres Třebíč."],
+    ["Identifikace zadavatele", "Budišováci, z. s., sdružení nezávislých kandidátů pro volby do zastupitelstva městyse Budišov 2026, Budišov, okres Třebíč."],
+    ["Financování kampaně", "Kampaň je financována z osobních příspěvků členů spolku Budišováci, z. s. Kampaň nevyužívá dary od právnických osob ani jiné externí financování."],
     ["Zpracovatel webu", "klarahomolkova.cz"],
-    ["Poslední aktualizace", "23. 9. 2026"]
+    ["Poslední aktualizace", "24. 9. 2026"]
   ];
   function openGdpr(e) { if (e) e.preventDefault(); openModal("", "Ochrana osobních údajů (GDPR)", GDPR_BLOCKS, e && e.currentTarget); }
   function openTransparency(e) { if (e) e.preventDefault(); openModal("", "Transparentnost / Financování kampaně", TRANSPARENCY_BLOCKS, e && e.currentTarget); }
@@ -1460,6 +1461,11 @@ window.GOOGLE_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbybz3-_Gp
   var btnLabel = btn ? btn.innerHTML : "";
   var formShownAt = Date.now();
 
+  ["jmeno", "email"].forEach(function (name) {
+    var field = form.querySelector('[name="' + name + '"]');
+    if (field) field.addEventListener("input", function () { field.classList.remove("invalid"); });
+  });
+
   function showOk() { if (okMsg) okMsg.style.display = "block"; if (errMsg) errMsg.style.display = "none"; }
   function showErr() { if (errMsg) errMsg.style.display = "block"; if (okMsg) okMsg.style.display = "none"; }
 
@@ -1473,7 +1479,21 @@ window.GOOGLE_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbybz3-_Gp
     var hp = form.querySelector('[name="www"]');
     if (hp && hp.value) return;
 
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+    var jmenoField = form.querySelector('[name="jmeno"]');
+    var emailField = form.querySelector('[name="email"]');
+    var souhlasField = form.querySelector('[name="souhlas"]');
+    jmenoField.classList.remove("invalid");
+    emailField.classList.remove("invalid");
+
+    var jmenoOk = jmenoField.value.trim().length >= 5;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
+    var firstInvalid = null;
+
+    if (!jmenoOk) { jmenoField.classList.add("invalid"); firstInvalid = firstInvalid || jmenoField; }
+    if (!emailOk) { emailField.classList.add("invalid"); firstInvalid = firstInvalid || emailField; }
+
+    if (!jmenoOk || !emailOk) { if (firstInvalid) firstInvalid.focus(); return; }
+    if (souhlasField && !souhlasField.checkValidity()) { souhlasField.reportValidity(); return; }
 
     var endpoint = window.GOOGLE_FORM_ENDPOINT;
     if (!endpoint || endpoint.indexOf("TVOJE_APPS_SCRIPT_URL_ZDE") !== -1) {
