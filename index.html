@@ -274,7 +274,15 @@ header.scrolled .nav{height:66px}
 .hero-facts b{display:block;font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
 .hero-facts span{display:block;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 .hero-facts li.is-count b{color:#6FC3F2}
-@media(prefers-reduced-motion:reduce){.hero-video{animation:none}.hero-copy-inner{animation:none;opacity:1;transform:none}}
+.hero-scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;
+  display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:color .25s,border-color .25s,background .25s}
+.hero-scroll:hover{color:#fff;border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.12)}
+.hero-scroll svg{display:block;animation:heroScrollBounce 1.8s ease-in-out infinite}
+@keyframes heroScrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@media(max-width:760px){.hero-scroll{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-video{animation:none}.hero-copy-inner{animation:none;opacity:1;transform:none}.hero-scroll svg{animation:none}}
 
 /* modal (detail priority i programu) */
 .modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:24px}
@@ -785,6 +793,9 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
       <li class="is-count" id="hero-countdown"><b>9.–10. 10.</b><span>volby 2026</span></li>
     </ul>
   </div>
+  <a class="hero-scroll" href="#o-nas" aria-label="Posunout na obsah stránky">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
 </section>
 
 <!-- ============ O NÁS ============ -->
@@ -1465,7 +1476,7 @@ window.SITE_MEDIA = {
     var pp=vid.play(); if(pp&&pp.catch)pp.catch(function(){});
     ["loadeddata","canplay"].forEach(function(ev){vid.addEventListener(ev,function(){var p=vid.play();if(p&&p.catch)p.catch(function(){});});}); }
 
-  var t = useFade ? {k:200,c:550,s:900,go:1900} : {k:250,c:700,s:1100,go:2600};
+  var t = useFade ? {k:200,c:550,s:900,go:2600} : {k:250,c:700,s:1100,go:3400};
   var timers=[]; function later(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
   requestAnimationFrame(function(){ if(scrim)scrim.classList.add("show"); });
   later(function(){K&&K.classList.add("show");},t.k);
