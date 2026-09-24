@@ -659,6 +659,7 @@ header.scrolled .brand-logo{height:32px}
 .about-copy .kicker{display:block;margin-bottom:var(--s4)}
 .about-copy .h1{margin-bottom:var(--s6)}
 .about-lead{font-size:1.12rem;line-height:1.65;max-width:52ch}
+.about-lead+.about-lead{margin-top:var(--s5)}
 .about-emblem{margin:0;position:relative;background:var(--paper-2);border-radius:var(--r);
   padding:clamp(28px,4vw,56px) clamp(24px,4vw,56px) clamp(22px,3vw,40px)}
 .about-emblem::before{content:"";position:absolute;left:0;top:0;width:56px;height:3px;background:var(--accent)}
@@ -805,7 +806,10 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
       <div class="about-copy rv">
         <span class="kicker">Kdo jsme</span>
         <h2 class="h1">Sousedé, ne<br>profesionální politici</h2>
-        <p class="about-lead">Budišováci jsou lidé, které potkáváte ve škole, v práci, na poště i na návsi. Nespojuje nás politika, ale místo, Budišov a jeho části. Do voleb jdeme se dvěma kandidátkami a jedním cílem: obec otevřená, hospodárná a příjemná pro život všech generací.</p>
+        <p class="about-lead">Jsme stále se rozrůstající parta lidí, kterým záleží na podmínkách žití a soužití v Budišově.</p>
+        <p class="about-lead">Našim cílem je řádné fungování a správa naší obce, která musí být otevřená, transparentní a přátelská k občanům.</p>
+        <p class="about-lead">Navazujeme na dlouhodobé hodnoty vycházejících z našich rodin a zkušeností, kde jsou na prvních místech odpovědné hospodaření, podpora vzdělávání a kultury, ochrana životního prostředí. K tomu bychom chtěli přidat nebo zlepšit úroveň veřejných služeb a zapojení občanů do rozhodování.</p>
+        <p class="about-lead">Jsme Budišováci a Budišov nás spojuje!</p>
       </div>
       <figure class="about-emblem rv">
         <img src="logo-znak.webp" width="900" height="684" loading="lazy" decoding="async" alt="Logo Budišováci – kostel a brána v Budišově, pod nimi nápis Budišov nás spojuje">
@@ -819,7 +823,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
   <div class="wrap">
     <div class="shead rv">
       <div><span class="kicker">Volební program</span><h2 class="h1">Deset oblastí,<br>na kterých nám záleží</h2></div>
-      <p>Žádné plané sliby. Rozklikněte kteroukoliv oblast a přečtěte si, co konkrétně chceme pro Budišov udělat.</p>
+      <p>Rozklikněte kteroukoliv oblast a přečtěte si, co konkrétně chceme pro Budišov udělat.</p>
     </div>
     <div class="prog-list" id="proglist">
       <div class="prog-item" data-p="0" tabindex="0" role="button" aria-haspopup="dialog"><div class="pno">01</div><div><h3 class="ph3">Zprůhlednění a zefektivnění hospodaření obce</h3><p class="pclaim">Zpřístupníme přehled hospodaření obce online tak, aby občané jednoduše viděli, odkud peníze přicházejí a na co jsou vynakládány. Chceme také zavést participativní rozpočet, díky kterému budou moci občané přímo rozhodovat o části obecních investic.</p></div><div class="pplus" aria-hidden="true">+</div></div>
@@ -843,10 +847,6 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
 <!-- ============ NÁŠ TÝM ============ -->
 <section class="team" id="tym">
   <div class="wrap">
-    <div class="shead rv">
-      <div><span class="kicker">Lidé, ne funkce</span></div>
-    </div>
-
     <!-- Budišováci I. — "První tým" / "Druhý tým" místo "Kandidátka č. 1/2":
          dokud volební komise oficiálně nepřidělí čísla kandidátek, ať to
          nevypadá jako závazné/úřední číslo. Jakmile budou čísla přidělená,
@@ -862,7 +862,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
         <div class="txt">
           <div class="role">Lídryně kandidátky · Učitelka ZŠ · 44 let</div>
           <h3>Mgr. Barbora Mikysková</h3>
-          <p class="say">Vede kandidátku Budišováci&nbsp;I. Ve škole i v obci ji spojuje jedno téma, aby tu měly děti i mladí důvod zůstat.</p>
+          <p class="say">Vede kandidátku Budišováci&nbsp;I.</p>
           <div class="q"><div class="k">Medailonek</div><p>Mám ráda přírodu, jezdím na kole nebo chodím na procházky. Před pár lety jsem propadla kouzlu otužování. Velmi ráda bych svojí energií a optimismem přispěla k tomu, aby byl Budišov ještě lepším místem pro všechny. Společně můžeme tvořit budoucnost, na kterou budeme pyšní.</p></div>
         </div>
       </div>
@@ -921,7 +921,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
         <div class="txt">
           <div class="role">Lídryně kandidátky · Ekonomka · 47 let</div>
           <h3>Ing. Ludmila Požárová</h3>
-          <p class="say">Vede kandidátku Budišováci&nbsp;II. K obci přistupuje jako k dobře vedenému hospodaření, přehledně, zodpovědně a s ohledem na budoucnost.</p>
+          <p class="say">Vede kandidátku Budišováci&nbsp;II.</p>
           <div class="q"><div class="k">Medailonek</div><p>Jsem vystudovaná ekonomka a věnuji se účetnictví a ekonomice firem. Vedla jsem ekonomické oddělení a vím, jak důležitá je spolupráce, respekt a zodpovědnost. Rodina je pro mě základ a vždy byla na prvním místě. Mám ráda férové jednání a když není něco v pořádku, ozvu se. Dobré nápady ráda podpořím bez ohledu na to, od koho přicházejí. Ve volném čase ráda čtu, zajímám se o historii, sport, cestování a vaření. Do voleb jdu proto, že nechci jen přihlížet, ale také přiložit ruku k dílu. Věřím, že našemu městysi prospějí nové tváře, elán, dobré nápady a chuť posouvat věci zase o kousek dál.</p></div>
         </div>
       </div>
