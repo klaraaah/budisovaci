@@ -374,6 +374,26 @@ header.scrolled .nav{height:66px}
 .post .tlink{margin-top:var(--s5);color:var(--brand);font-size:.9rem}
 
 /* ============ JAK VOLIT ============ */
+/* ============ HISTORIE / KANDIDÁTKY V MINULOSTI ============ */
+.history{padding:var(--s11) 0 var(--s10)}
+.hist-legend{display:flex;flex-wrap:wrap;gap:var(--s6);margin-bottom:var(--s6);
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;color:var(--ink-2)}
+.hist-legend .hl-item{display:flex;align-items:center;gap:8px}
+.hist-sq{width:13px;height:13px;border-radius:3px;flex:0 0 auto;border:1.5px solid var(--line-2);background:transparent}
+.hist-sq.m{background:var(--brand);border-color:var(--brand)}
+.hist-wrap{border:1px solid var(--line);border-radius:var(--r);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.hist-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
+.hist-table th,.hist-table td{padding:11px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.hist-table thead th{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);background:var(--paper-2);position:sticky;top:0}
+.hist-table th.hist-name,.hist-table td.hist-name{text-align:left;white-space:nowrap;padding-left:var(--s5)}
+.hist-table td.hist-name{font-weight:600;color:var(--ink)}
+.hist-table td.hist-mand,.hist-table th.hist-mand{font-family:var(--mono);color:var(--ink-2);padding-right:var(--s5)}
+.hist-table tbody tr:hover{background:var(--paper-2)}
+.hist-table tbody tr:last-child td{border-bottom:none}
+.hist-cell .hist-sq{margin:0 auto}
+.hist-toggle{margin-top:var(--s6)}
+.hist-note{margin-top:var(--s5);font-size:.85rem;color:var(--ink-3)}
 .vote{padding:var(--s11) 0 var(--s10);background:var(--paper-2)}
 .vote-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:var(--s8)}
 .vcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:var(--s6);
@@ -931,6 +951,42 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
   </div>
 </section>
 
+<!-- ============================================================================
+     HISTORIE — Kandidátky v Budišově od roku 1994 (data: přehled kandidatur/mandátů
+     1994–2022). Kompletní tabulka je ve skriptu níže (pole HIST_DATA); výchozí pohled
+     ukazuje prvních 15 řádků (seřazeno podle počtu kandidatur), tlačítko rozbalí zbytek.
+     Sekce záměrně NENÍ v hlavním menu (viz dohoda s klientem) — odkaz je jen v patičce.
+     ============================================================================ -->
+<section class="history" id="minulost">
+  <div class="wrap">
+    <div class="shead rv">
+      <div><span class="kicker">Historie</span><h2 class="h1">Kandidátky v Budišově<br>od roku 1994.</h2></div>
+      <p>Od roku 1994 do roku 2022 se o zastupitelstvo v Budišově ucházelo přes 280 lidí. Podívejte se, kdo kandidoval nejdéle a komu to vyneslo mandát.</p>
+    </div>
+
+    <div class="hist-legend rv">
+      <span class="hl-item"><i class="hist-sq m" aria-hidden="true"></i>získaný mandát</span>
+      <span class="hl-item"><i class="hist-sq k" aria-hidden="true"></i>kandidatura bez mandátu</span>
+    </div>
+
+    <div class="hist-wrap rv">
+      <table class="hist-table">
+        <thead>
+          <tr>
+            <th class="hist-name">Jméno a příjmení</th>
+            <th>1994</th><th>1998</th><th>2002</th><th>2006</th><th>2010</th><th>2014</th><th>2018</th><th>2022</th>
+            <th class="hist-mand">Mandáty</th>
+          </tr>
+        </thead>
+        <tbody id="hist-tbody"></tbody>
+      </table>
+    </div>
+
+    <button class="btn btn-line hist-toggle" id="hist-toggle" type="button">Zobrazit všech <span id="hist-total">285</span> kandidátů <span class="arw">→</span></button>
+    <p class="hist-note">Zdroj: přehled kandidatur a mandátů zpracovaný pro potřeby kampaně, na základě veřejných výsledků voleb do zastupitelstva městyse Budišov.</p>
+  </div>
+</section>
+
 <!-- ============ JAK VOLIT ============ -->
 <section class="vote" id="jak-volit">
   <div class="wrap">
@@ -1117,7 +1173,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
         <div class="foot-brand">Budišováci</div>
         <p class="foot-desc">Budišov nás spojuje. Sdružení nezávislých kandidátů pro komunální volby 2026 v obci Budišov.</p>
       </div>
-      <div><h5>Sekce</h5><ul><li><a href="#o-nas">O nás</a></li><li><a href="#program">Program</a></li><li><a href="#tym">Náš tým</a></li><li><a href="#akce">Akce</a></li><li><a href="#jak-volit">Jak volit</a></li><li><a href="#noviny">Noviny</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+      <div><h5>Sekce</h5><ul><li><a href="#o-nas">O nás</a></li><li><a href="#program">Program</a></li><li><a href="#tym">Náš tým</a></li><li><a href="#akce">Akce</a></li><li><a href="#jak-volit">Jak volit</a></li><li><a href="#noviny">Noviny</a></li><li><a href="#minulost">Kandidátky v minulosti</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
       <div><h5>Kontakt</h5><ul><li><a href="mailto:info@budisovaci.cz">info@budisovaci.cz</a></li><li><a href="tel:+420602702803">+420 602 702 803</a></li><li>Budišov, okres Třebíč</li></ul></div>
       <div><h5>Právní informace</h5><ul><li><a href="#" id="footer-gdpr-link">GDPR</a></li><li><a href="#" id="footer-transparency-link">Transparentnost</a></li><li id="cookie-settings-li" hidden><a href="#" id="cookie-settings-link">Nastavení cookies</a></li></ul></div>
     </div>
@@ -1439,6 +1495,338 @@ window.SITE_MEDIA = {
   window.addEventListener("pointerdown",function(e){ if(!skip||!skip.contains(e.target)) finish(true); },{once:true});
   var ty=null; window.addEventListener("touchstart",function(e){ty=e.touches[0].clientY;},{passive:true});
   window.addEventListener("touchmove",function(e){ if(ty!=null && Math.abs(ty-e.touches[0].clientY)>20)finish(true);},{passive:true});
+})();
+</script>
+
+<!-- ============================================================================
+     HISTORIE — Kandidátky v minulosti (data z tabulky "Grafický přehled",
+     1994–2022). HIST_DATA: [jméno, počet kandidatur, počet mandátů, kód let
+     "1994 1998 2002 2006 2010 2014 2018 2022" — m = mandát, k = kandidatura
+     bez mandátu, . = nekandidoval]. Seřazeno podle počtu kandidatur sestupně.
+     Výchozí pohled ukazuje prvních 15 řádků, tlačítko rozbalí zbytek.
+     ============================================================================ -->
+<script>
+(function () {
+  var HIST_DATA = [
+["Petr Piňos",8,6,"kkmmmmmm"],
+["Milan Doležal",8,3,"kkkkmmkm"],
+["Alois Bačák",8,1,"mkkkkkkk"],
+["Josef Vít",8,1,"mkkkkkkk"],
+["Rudolf Matoušek",7,5,"kmmmmmk."],
+["Zdeněk Sedláček",7,2,".kkmmkkk"],
+["Jiří Švaříček",7,0,"k.kkkkkk"],
+["Josef Suchánek",7,0,"kkkkkkk."],
+["Vladimír Večeřa",7,0,"kkkkkkk."],
+["Ladislav Dokulil",6,6,".mmmmmm."],
+["Antonín Večeřa",6,3,"k.mmm.kk"],
+["Helena Kašparová/Zezulová",6,2,"..kkkmkm"],
+["Jiří Havlík",6,1,"mkkkkk.."],
+["Miroslav Nováček",6,1,".k.kkkkm"],
+["Alois Dítě",6,0,"kk.kkkk."],
+["Jarmila Ujčíková",6,0,".k.kkkkk"],
+["Jaroslav Zezula",6,0,".kkkkkk."],
+["Ludmila Pospíšilová",6,0,"..kkkkkk"],
+["Marek Pavlíček",6,0,"..kkkkkk"],
+["Zdeněk Machát",5,5,"...mmmmm"],
+["Zdeněk Smrček",5,5,"...mmmmm"],
+["Hana Klímová",5,4,".k..mmmm"],
+["Miroslav Kubín",5,3,"kkmmm..."],
+["Vladimír Mareček",5,3,".m.mkm.k"],
+["Vladimír Suchánek",5,3,"mkmmk..."],
+["Jana Smrčková",5,2,"...mkkmk"],
+["Milan Koš",5,1,"...kkkmk"],
+["Alois Lisý",5,0,"...kkkkk"],
+["Dagmar Dítětová",5,0,"..kkkk.k"],
+["Dáša Karasová",5,0,".k.kkkk."],
+["Jaroslav Hort",5,0,"kkkkk..."],
+["Jiří Klíma",5,0,"...kkkkk"],
+["Ladislav Křivý",5,0,"kk.kkk.."],
+["Radek Nejedlý",5,0,".k.kkk.k"],
+["Stanislav Bačák",5,0,".k.kkkk."],
+["Vladimír Slabý",5,0,"...kkkkk"],
+["Vlastimil Vrzal",5,0,"kkkk.k.."],
+["Milan Boček",4,4,"...mmmm."],
+["Josef Ondráček",4,3,"....kmmm"],
+["Blanka Trnková",4,0,"....kkkk"],
+["Eva Stonáčková",4,0,".kk..kk."],
+["František Ujčík",4,0,"...kkkk."],
+["Jana Klímová",4,0,".k.kkk.."],
+["Jaroslav Večeřa",4,0,"k..kk..k"],
+["Jitka Coufalová",4,0,"..kkkk.."],
+["Jiří Horák",4,0,".kkkk..."],
+["Josef Pospíšil",4,0,"....kkkk"],
+["Josef Syrový",4,0,"k.kkk..."],
+["Karel Věžník",4,0,"..kk..kk"],
+["Luboš Krátký",4,0,"....kkkk"],
+["Miroslav Rybníček",4,0,"kkk..k.."],
+["Tomáš Klištinec",4,0,"..kkkk.."],
+["Radek Kliner",3,3,".....mmm"],
+["Veronika Ležáková",3,3,".....mmm"],
+["Vladislava Karasová",3,3,"..mmm..."],
+["David Kašpar",3,2,"...kmm.."],
+["Helena Kostelecká",3,2,".m.mk..."],
+["Josef Šabacký",3,2,"mm.k...."],
+["Petr Jaroš",3,2,".....kmm"],
+["Zdeněk Toufar",3,1,".km..k.."],
+["Alois Dítě",3,0,"k...kk.."],
+["Alois Komínek",3,0,"....kkk."],
+["Alois Sedlák",3,0,"..kkk..."],
+["Dušan Kresan",3,0,"..kkk..."],
+["Iveta Zedníčková/Vrzalová",3,0,"...k.kk."],
+["Jan Sedláček",3,0,".....kkk"],
+["Jaroslav Večeřa",3,0,"...kk..k"],
+["Jindřich Dufek",3,0,"...kkk.."],
+["Jiří Klíma",3,0,"....kk.k"],
+["Jiří Matoušek",3,0,".....kkk"],
+["Josef Janoušek",3,0,"kk....k."],
+["Josef Rybníček",3,0,"kkk....."],
+["Josef Vlček",3,0,"....kkk."],
+["Lenka Řehořková",3,0,".k.k..k."],
+["Ludmila Jochová",3,0,"...kkk.."],
+["Marie Benáčková",3,0,".....kkk"],
+["Marie Jurová",3,0,"..kkk..."],
+["Marie Mejzlíková",3,0,"kkk....."],
+["Marie Suchánková",3,0,"...k.kk."],
+["Marie Věžníková",3,0,"kkk....."],
+["Milan Syrový",3,0,".....kkk"],
+["Miloslav Tichý",3,0,".....kkk"],
+["Miroslav Zezula",3,0,"....kkk."],
+["Olga Ondráčková",3,0,".....kkk"],
+["Pavel Vrba",3,0,"...kkk.."],
+["Petr Pospíšil",3,0,".kkk...."],
+["Tomáš Nováček",3,0,".....kkk"],
+["Vlastimil Dítě",3,0,"k..kk..."],
+["Václav Kosina",3,0,"....kk.k"],
+["Barbora Mikysková",2,2,"......mm"],
+["Jiří Man",2,2,"...mm..."],
+["Karel Svoboda",2,2,"m.m....."],
+["Ladislav Péťa",2,2,".mm....."],
+["Libuše Pospíšilová",2,2,"mm......"],
+["Roman Vašíček",2,2,"......mm"],
+["Jan Zalaba",2,1,"mk......"],
+["Jana Švaříčková",2,1,"...km..."],
+["Jiří Rybníček",2,1,".m.....k"],
+["Lukáš Chalupa",2,1,"......km"],
+["Milan Doležal",2,1,"k.....m."],
+["Pavel Tesař",2,1,"..k..m.."],
+["Václav Tesař",2,1,".km....."],
+["Alois Baláš",2,0,"...kk..."],
+["Eva Sýkorová",2,0,"...kk..."],
+["František Hladký",2,0,"..kk...."],
+["Hana Guthová",2,0,"....kk.."],
+["Hana Zemanová",2,0,"......kk"],
+["Helena Kafoňková",2,0,".k....k."],
+["Irena Rybníčková",2,0,"..k..k.."],
+["Iva Matoušková",2,0,"....kk.."],
+["Ivo Jindra",2,0,"...k.k.."],
+["Ivo Stonáček",2,0,"kk......"],
+["Jakub Kašpar",2,0,"......kk"],
+["Jana Cabejšková",2,0,".....kk."],
+["Jana Dítětová",2,0,".....kk."],
+["Jana Janová",2,0,"...kk..."],
+["Jarmila Ujčíková",2,0,"....k.k."],
+["Jaroslav Doležal",2,0,"....k.k."],
+["Jaroslav Tůma",2,0,"......kk"],
+["Jiří Černý",2,0,"...kk..."],
+["Josef Orel",2,0,"....kk.."],
+["Josef Šulc",2,0,"k....k.."],
+["Karel Zedníček",2,0,"....kk.."],
+["Ladislav Syrový",2,0,"k...k..."],
+["Ludmila Doležalová",2,0,"....k..k"],
+["Luděk Řehořka",2,0,"......kk"],
+["Marie Havlíková",2,0,"...kk..."],
+["Marie Nováčková",2,0,".k.k...."],
+["Marie Slabá",2,0,"kk......"],
+["Marie Svobodová",2,0,"...k..k."],
+["Marie Zezulová",2,0,"..kk...."],
+["Martina Vašíčková",2,0,".....k.k"],
+["Michaela Tesařová",2,0,".....k.k"],
+["Milada Suchánková",2,0,".k..k..."],
+["Miloš Vávra",2,0,"..k.k..."],
+["Miroslav Zezula",2,0,"....kk.."],
+["Monika Havlíková",2,0,"......kk"],
+["Monika Večeřová",2,0,"...kk..."],
+["Patrik Klíma",2,0,"......kk"],
+["Pavel Černý",2,0,".....kk."],
+["Pavel Švihálek",2,0,"....kk.."],
+["Pavel Žák",2,0,"......kk"],
+["Petr Tesař",2,0,".....kk."],
+["Rostislav Zalaba",2,0,"..k.k..."],
+["Soňa Pospíšilová",2,0,"......kk"],
+["Tomáš Svoboda",2,0,"......kk"],
+["Václav Štourač",2,0,"......kk"],
+["Věra Kubátová",2,0,"kk......"],
+["Zdeněk Carda",2,0,"....kk.."],
+["Zdeněk Kliner",2,0,"k...k..."],
+["František Coufal",1,1,"m......."],
+["Jiří Hort",1,1,".m......"],
+["Josef Beránek",1,1,".m......"],
+["Ladislav Eichler",1,1,".......m"],
+["Marie Pavlíčková",1,1,"m......."],
+["Miroslav Cejpek",1,1,"m......."],
+["Svatoslav Ondráček",1,1,".m......"],
+["Aleš Dítě",1,0,"...k...."],
+["Aleš Tesař",1,0,".......k"],
+["Alois Bačák",1,0,"....k..."],
+["Anna Křehlíková",1,0,".......k"],
+["Bohumil Borůvka",1,0,".......k"],
+["Bohumil Rybníček",1,0,".k......"],
+["Dana Syrová",1,0,".k......"],
+["Daniela Klištincová",1,0,".....k.."],
+["David Komínek",1,0,"......k."],
+["David Mareček",1,0,".......k"],
+["David Čáslava",1,0,".....k.."],
+["Denis Jindra",1,0,".......k"],
+["Dobroslav Šafařík",1,0,"k......."],
+["František Stonáček",1,0,"......k."],
+["František Turek",1,0,"....k..."],
+["František Večeřa",1,0,"k......."],
+["Gabriela Malinkovičová",1,0,".......k"],
+["Hana Agáta Komínková",1,0,".......k"],
+["Helena Matoušková",1,0,"..k....."],
+["Igor Šutovský",1,0,"..k....."],
+["Iva Rybníčková",1,0,".......k"],
+["Jan Joch",1,0,".....k.."],
+["Jan Roušal",1,0,"....k..."],
+["Jan Smejkal",1,0,".......k"],
+["Jana Kaňková",1,0,".....k.."],
+["Jana Klímová",1,0,"...k...."],
+["Jana Lieberzeitová",1,0,".....k.."],
+["Jana Neuwirthová",1,0,".......k"],
+["Jana Vrbová",1,0,"...k...."],
+["Jana Vrzalová",1,0,"...k...."],
+["Jarmila Pavlíčková",1,0,".....k.."],
+["Jaroslav Klíma",1,0,"...k...."],
+["Jaroslav Svoboda",1,0,"k......."],
+["Jaroslav Tesař",1,0,"....k..."],
+["Jindřich Požár",1,0,".k......"],
+["Jindřiška Kavalcová",1,0,".k......"],
+["Jitka Obůrková",1,0,".......k"],
+["Jiří Kašpar",1,0,".....k.."],
+["Jiří Klíma",1,0,".......k"],
+["Jiří Nejedlý",1,0,"k......."],
+["Jiří Nováček",1,0,".....k.."],
+["Jiří Ondráček",1,0,".......k"],
+["Jiří Pacal",1,0,".......k"],
+["Jiří Svoboda",1,0,".......k"],
+["Josef Karas",1,0,".....k.."],
+["Josef Kaňka",1,0,".....k.."],
+["Josef Piňos",1,0,".k......"],
+["Josef Soukup",1,0,".k......"],
+["Josef Syrový",1,0,"k......."],
+["Karel Cabejšek",1,0,".....k.."],
+["Karel Křivý",1,0,".....k.."],
+["Karel Nováček",1,0,"....k..."],
+["Karel Syrový",1,0,"k......."],
+["Kateřina Syrová",1,0,".....k.."],
+["Khánh Nguyen",1,0,".......k"],
+["Ladislav Vrba",1,0,"k......."],
+["Lubomír Borůvka",1,0,"....k..."],
+["Luboš Švihálek",1,0,".....k.."],
+["Lucie Šabacká",1,0,".......k"],
+["Ludmila Eichlerová",1,0,"k......."],
+["Ludvík Carda",1,0,"....k..."],
+["Lukáš Nováček",1,0,".....k.."],
+["Lukáš Vrzal",1,0,".......k"],
+["Marcela Toufarová",1,0,"......k."],
+["Marie Homolová",1,0,".....k.."],
+["Marie Kašparová",1,0,".....k.."],
+["Marie Krátká",1,0,".......k"],
+["Marie Ležáková",1,0,".k......"],
+["Marie Rohovská",1,0,".....k.."],
+["Martin Krčál",1,0,".....k.."],
+["Martin Lisý",1,0,"...k...."],
+["Martin Novák",1,0,".....k.."],
+["Martin Rybníček",1,0,".....k.."],
+["Martin Sedlák",1,0,"...k...."],
+["Matěj Sedláček",1,0,".......k"],
+["Michaela Tomšíková",1,0,".......k"],
+["Michaela Večeřová",1,0,"....k..."],
+["Michal Dvořák",1,0,".....k.."],
+["Milan Novák",1,0,".....k.."],
+["Miroslav Nováček",1,0,".....k.."],
+["Miroslav Rybníček",1,0,"k......."],
+["Miroslav Škarek",1,0,"k......."],
+["Oldřich Lempera",1,0,"....k..."],
+["Ondřej Doležal",1,0,".......k"],
+["Pavel Dvořák",1,0,"...k...."],
+["Pavel Jura",1,0,".....k.."],
+["Pavel Karas",1,0,".......k"],
+["Pavel Nejedlý",1,0,".....k.."],
+["Pavel Široký",1,0,"...k...."],
+["Petr Karas",1,0,".k......"],
+["Petr Nováček",1,0,"...k...."],
+["Petr Rauscher",1,0,"....k..."],
+["Petr Sedláček",1,0,".....k.."],
+["Petra Skalická",1,0,"...k...."],
+["Radek Langer",1,0,"....k..."],
+["Radek Pavlatovský",1,0,".......k"],
+["Radmila Lukešová",1,0,"......k."],
+["Radmila Černá",1,0,".......k"],
+["Roman Klíma",1,0,"...k...."],
+["Roman Šafařík",1,0,".......k"],
+["Rostislav Carda",1,0,"...k...."],
+["Rudolf Lysák",1,0,"k......."],
+["Sabina Ležáková",1,0,".......k"],
+["Sabina Svobodová",1,0,".......k"],
+["Stanislava Spencer Křehlíková",1,0,".......k"],
+["Tomáš Galanžár",1,0,".......k"],
+["Veronika Bulová",1,0,".....k.."],
+["Veronika Divišová",1,0,".....k.."],
+["Veronika Tichá",1,0,".....k.."],
+["Vladimír Komínek",1,0,"....k..."],
+["Vladimír Kostelecký",1,0,".....k.."],
+["Vladimír Kozlíček",1,0,".....k.."],
+["Vladimíra Stará",1,0,"k......."],
+["Václav Dosbaba",1,0,"..k....."],
+["Vítězslav Tůma",1,0,".....k.."],
+["Věra Nováčková",1,0,".k......"],
+["Zbyněk Koš",1,0,"...k...."],
+["Zdenek Toufar",1,0,"...k...."],
+["Zdeněk Koudelka",1,0,".......k"],
+["Zdeněk Poskočil",1,0,".k......"],
+["Zdeněk Sedláček",1,0,".......k"],
+["Zdeňka Maloušková",1,0,".k......"],
+["Zita Marečková",1,0,"...k...."],
+["Zuzana Pátková",1,0,".....k.."],
+["Štěpán Mareček",1,0,".....k.."],
+["Štěpánka Křivá",1,0,"k......."],
+["Šárka Bernatová",1,0,".....k.."],
+["Šárka Večeřová",1,0,"..k....."]
+  ];
+  var YEARS = ["1994","1998","2002","2006","2010","2014","2018","2022"];
+  var tbody = document.getElementById("hist-tbody");
+  var toggle = document.getElementById("hist-toggle");
+  var totalEl = document.getElementById("hist-total");
+  if (!tbody) return;
+  if (totalEl) totalEl.textContent = String(HIST_DATA.length);
+
+  function cellHtml(code) {
+    if (code === "m") return '<td class="hist-cell"><span class="hist-sq m" title="Získaný mandát"></span></td>';
+    if (code === "k") return '<td class="hist-cell"><span class="hist-sq k" title="Kandidatura bez mandátu"></span></td>';
+    return '<td class="hist-cell"></td>';
+  }
+
+  function rowHtml(row) {
+    var name = row[0], kand = row[1], mand = row[2], code = row[3];
+    var cells = "";
+    for (var i = 0; i < code.length; i++) cells += cellHtml(code[i]);
+    return '<tr><td class="hist-name">' + name + "</td>" + cells + '<td class="hist-mand">' + mand + " / " + kand + "</td></tr>";
+  }
+
+  function render(rows) {
+    tbody.innerHTML = rows.map(rowHtml).join("");
+  }
+
+  var VISIBLE_DEFAULT = 15;
+  render(HIST_DATA.slice(0, VISIBLE_DEFAULT));
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      render(HIST_DATA);
+      toggle.style.display = "none";
+    });
+  }
 })();
 </script>
 
