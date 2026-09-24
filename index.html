@@ -269,10 +269,14 @@ header.scrolled .nav{height:66px}
 .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
 .btn-ghost:hover{background:#fff;color:var(--ink-bg);border-color:#fff}
 .hero-facts{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad) var(--s6)}
-.hero-facts ul{list-style:none;display:inline-flex;border-top:1px solid rgba(255,255,255,.2)}
-.hero-facts li{padding:22px 24px 4px 0}
-.hero-facts b{display:block;font-size:clamp(1.6rem,2.6vw,2.25rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
-.hero-facts span{display:block;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.hero-facts ul{list-style:none;display:inline-flex}
+.hero-facts li{display:flex;align-items:center;gap:14px;padding:15px 28px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:100px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hero-facts li::before{content:"";width:10px;height:10px;border-radius:50%;background:#6FC3F2;
+  box-shadow:0 0 0 5px rgba(111,195,242,.24);flex:0 0 auto}
+.hero-facts b{font-size:clamp(1.5rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.02em;line-height:1;color:#fff;white-space:nowrap}
+.hero-facts span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);white-space:nowrap}
 .hero-facts li.is-count b{color:#6FC3F2}
 .hero-scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;
   display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
@@ -603,7 +607,7 @@ footer ul a:hover{color:var(--brand)}
   .hero-copy{padding:var(--s8) var(--pad) var(--s7)}
   .hero-copy-inner{max-width:none}
   .hero-video,.hero-yt,.hero-pause{display:none}
-  .hero-facts li{padding:18px 12px 10px 0}
+  .hero-facts li{padding:12px 18px;gap:10px}.hero-facts b{font-size:1.35rem}.hero-facts span{font-size:.66rem}
   .prio,.cands,.news,.prog,.contact{padding:var(--s9) 0}
   .prio-grid{grid-template-columns:1fr}
   .cand-row{row-gap:var(--s7)}.cand{grid-column:span 12}.cand.offset{margin-top:0}
