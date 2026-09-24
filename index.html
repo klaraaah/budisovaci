@@ -1079,6 +1079,41 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
     <p class="vote-call">Nejste si jistí? Zavolejte nám: <a href="tel:+420602702803">+420 602 702 803</a></p>
   </div>
 </section>
+<!-- ============================================================================
+     HISTORIE — Kandidátky v Budišově od roku 1994 (data: přehled kandidatur/mandátů
+     1994–2022). Kompletní tabulka je ve skriptu níže (pole HIST_DATA); výchozí pohled
+     ukazuje prvních 15 řádků (seřazeno podle počtu kandidatur), tlačítko rozbalí zbytek.
+     Sekce záměrně NENÍ v hlavním menu (viz dohoda s klientem) — odkaz je jen v patičce.
+     ============================================================================ -->
+<section class="history" id="minulost">
+  <div class="wrap">
+    <div class="shead rv">
+      <div><span class="kicker">Historie</span><h2 class="h1">Kandidátky v Budišově<br>od roku 1994.</h2></div>
+      <p>Od roku 1994 do roku 2022 se o zastupitelstvo v Budišově ucházelo přes 280 lidí. Podívejte se, kdo kandidoval nejdéle a komu to vyneslo mandát.</p>
+    </div>
+
+    <div class="hist-legend rv">
+      <span class="hl-item"><i class="hist-sq m" aria-hidden="true"></i>získaný mandát</span>
+      <span class="hl-item"><i class="hist-sq k" aria-hidden="true"></i>kandidatura bez mandátu</span>
+    </div>
+
+    <div class="hist-wrap rv">
+      <table class="hist-table">
+        <thead>
+          <tr>
+            <th class="hist-name">Jméno a příjmení</th>
+            <th>1994</th><th>1998</th><th>2002</th><th>2006</th><th>2010</th><th>2014</th><th>2018</th><th>2022</th>
+            <th class="hist-mand">Mandáty</th>
+          </tr>
+        </thead>
+        <tbody id="hist-tbody"></tbody>
+      </table>
+    </div>
+
+    <button class="btn btn-line hist-toggle" id="hist-toggle" type="button">Zobrazit všech <span id="hist-total">285</span> kandidátů <span class="arw">→</span></button>
+    <p class="hist-note">Zdroj: přehled kandidatur a mandátů zpracovaný pro potřeby kampaně, na základě veřejných výsledků voleb do zastupitelstva městyse Budišov.</p>
+  </div>
+</section>
 <!-- ============ NOVINY (listování, kliknutím stažení) ============ -->
 <section class="news" id="noviny">
   <div class="wrap">
@@ -1141,41 +1176,6 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
     </div>
   </div>
 </section>
-<!-- ============================================================================
-     HISTORIE — Kandidátky v Budišově od roku 1994 (data: přehled kandidatur/mandátů
-     1994–2022). Kompletní tabulka je ve skriptu níže (pole HIST_DATA); výchozí pohled
-     ukazuje prvních 15 řádků (seřazeno podle počtu kandidatur), tlačítko rozbalí zbytek.
-     Sekce záměrně NENÍ v hlavním menu (viz dohoda s klientem) — odkaz je jen v patičce.
-     ============================================================================ -->
-<section class="history" id="minulost">
-  <div class="wrap">
-    <div class="shead rv">
-      <div><span class="kicker">Historie</span><h2 class="h1">Kandidátky v Budišově<br>od roku 1994.</h2></div>
-      <p>Od roku 1994 do roku 2022 se o zastupitelstvo v Budišově ucházelo přes 280 lidí. Podívejte se, kdo kandidoval nejdéle a komu to vyneslo mandát.</p>
-    </div>
-
-    <div class="hist-legend rv">
-      <span class="hl-item"><i class="hist-sq m" aria-hidden="true"></i>získaný mandát</span>
-      <span class="hl-item"><i class="hist-sq k" aria-hidden="true"></i>kandidatura bez mandátu</span>
-    </div>
-
-    <div class="hist-wrap rv">
-      <table class="hist-table">
-        <thead>
-          <tr>
-            <th class="hist-name">Jméno a příjmení</th>
-            <th>1994</th><th>1998</th><th>2002</th><th>2006</th><th>2010</th><th>2014</th><th>2018</th><th>2022</th>
-            <th class="hist-mand">Mandáty</th>
-          </tr>
-        </thead>
-        <tbody id="hist-tbody"></tbody>
-      </table>
-    </div>
-
-    <button class="btn btn-line hist-toggle" id="hist-toggle" type="button">Zobrazit všech <span id="hist-total">285</span> kandidátů <span class="arw">→</span></button>
-    <p class="hist-note">Zdroj: přehled kandidatur a mandátů zpracovaný pro potřeby kampaně, na základě veřejných výsledků voleb do zastupitelstva městyse Budišov.</p>
-  </div>
-</section>
 
 </main>
 
@@ -1187,7 +1187,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
         <div class="foot-brand">Budišováci</div>
         <p class="foot-desc">Budišov nás spojuje. Sdružení nezávislých kandidátů pro komunální volby 2026 v obci Budišov.</p>
       </div>
-      <div><h5>Sekce</h5><ul><li><a href="#o-nas">O nás</a></li><li><a href="#akce">Akce</a></li><li><a href="#tym">Náš tým</a></li><li><a href="#program">Program</a></li><li><a href="#jak-volit">Jak volit</a></li><li><a href="#noviny">Noviny</a></li><li><a href="#kontakt">Kontakt</a></li><li><a href="#minulost">Kandidátky v minulosti</a></li></ul></div>
+      <div><h5>Sekce</h5><ul><li><a href="#o-nas">O nás</a></li><li><a href="#akce">Akce</a></li><li><a href="#tym">Náš tým</a></li><li><a href="#program">Program</a></li><li><a href="#jak-volit">Jak volit</a></li><li><a href="#minulost">Kandidátky v minulosti</a></li><li><a href="#noviny">Noviny</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
       <div><h5>Kontakt</h5><ul><li><a href="mailto:info@budisovaci.cz">info@budisovaci.cz</a></li><li><a href="tel:+420602702803">+420 602 702 803</a></li><li>Budišov, okres Třebíč</li></ul></div>
       <div><h5>Právní informace</h5><ul><li><a href="#" id="footer-gdpr-link">GDPR</a></li><li><a href="#" id="footer-transparency-link">Transparentnost</a></li><li id="cookie-settings-li" hidden><a href="#" id="cookie-settings-link">Nastavení cookies</a></li></ul></div>
     </div>
