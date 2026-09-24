@@ -572,15 +572,14 @@ form button[type=submit] .btn-spin{display:inline-block;width:14px;height:14px;m
 
 /* ============ FOOTER ============ */
 footer{background:var(--ink-bg);color:#fff;padding:var(--s9) 0 var(--s6)}
-.foot-top{display:grid;grid-template-columns:1.7fr 1.5fr 1fr minmax(150px,1.1fr);gap:var(--gap);padding-bottom:var(--s8);border-bottom:1px solid rgba(255,255,255,.14)}
+.foot-top{display:grid;grid-template-columns:2fr 1.3fr 1fr 1.2fr;gap:var(--gap);padding-bottom:var(--s8);border-bottom:1px solid rgba(255,255,255,.14)}
 .foot-legal{padding-top:var(--s6);color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.6}
 .foot-legal p+p{margin-top:4px}
 .foot-brand{display:flex;align-items:center;gap:11px;font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
 .foot-brand .mk{width:12px;height:12px;background:var(--brand)}
 .foot-desc{margin-top:var(--s5);max-width:42ch;color:rgba(255,255,255,.6);font-size:.95rem}
-footer h5{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:var(--s5);line-height:1.6}
+footer h5{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:var(--s5);line-height:1.6;white-space:nowrap}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:var(--s3)}
-footer ul.cols2{display:grid;grid-template-columns:auto auto;column-gap:28px;row-gap:var(--s3);justify-content:start}
 footer ul a{color:rgba(255,255,255,.82);font-size:.95rem;transition:.25s}
 footer ul li{font-size:.95rem;color:rgba(255,255,255,.82)}
 footer ul a:hover{color:var(--brand)}
@@ -1188,7 +1187,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
         <div class="foot-brand">Budišováci</div>
         <p class="foot-desc">Budišov nás spojuje. Sdružení nezávislých kandidátů pro komunální volby 2026 v obci Budišov.</p>
       </div>
-      <div class="foot-sekce"><h5>Sekce</h5><ul class="cols2"><li><a href="#o-nas">O nás</a></li><li><a href="#akce">Akce</a></li><li><a href="#tym">Náš tým</a></li><li><a href="#program">Program</a></li><li><a href="#jak-volit">Jak volit</a></li><li><a href="#minulost">Kandidátky v minulosti</a></li><li><a href="#noviny">Noviny</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+      <div><h5>Sekce</h5><ul><li><a href="#o-nas">O nás</a></li><li><a href="#akce">Akce</a></li><li><a href="#tym">Náš tým</a></li><li><a href="#program">Program</a></li><li><a href="#jak-volit">Jak volit</a></li><li><a href="#minulost">Kandidátky v minulosti</a></li><li><a href="#noviny">Noviny</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
       <div><h5>Kontakt</h5><ul><li><a href="mailto:info@budisovaci.cz">info@budisovaci.cz</a></li><li><a href="tel:+420602702803">+420 602 702 803</a></li><li>Budišov, okres Třebíč</li></ul></div>
       <div><h5>Právní informace</h5><ul><li><a href="#" id="footer-gdpr-link">GDPR</a></li><li><a href="#" id="footer-transparency-link">Transparentnost</a></li><li id="cookie-settings-li" hidden><a href="#" id="cookie-settings-link">Nastavení cookies</a></li></ul></div>
     </div>
