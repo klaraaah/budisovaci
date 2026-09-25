@@ -457,6 +457,8 @@ header.scrolled .nav{height:66px}
 .vote-facts li{display:flex;flex-direction:column;gap:5px}
 .vote-facts b{font-family:var(--mono);font-size:1.15rem;color:var(--ink)}
 .vote-facts span{font-family:var(--mono);font-size:.92rem;color:var(--ink-3);letter-spacing:.03em}
+.vote-facts span a{color:var(--ink-3);border-bottom:1px solid var(--line-2);padding-bottom:1px;transition:.25s}
+.vote-facts span a:hover{color:var(--brand);border-color:var(--brand)}
 
 .vote-call{margin-top:var(--s5);font-size:1.08rem;color:var(--ink-2)}
 .vote-call a{color:var(--brand);font-weight:600;border-bottom:1.5px solid var(--line-2)}
@@ -1081,7 +1083,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
     <ul class="vote-facts">
       <li><b>Pátek 9. 10.</b><span>14:00–22:00</span></li>
       <li><b>Sobota 10. 10.</b><span>8:00–14:00</span></li>
-      <li><b>Kde</b><span>Obecní úřad Městys Budišov</span></li>
+      <li><b>Kde</b><span>Obecní úřad Městys Budišov, <a href="https://www.google.com/maps/search/Budi%C5%A1ov,+Budi%C5%A1ov+360" target="_blank" rel="noopener">Budišov 360</a></span></li>
     </ul>
 
     <p class="vote-call">Nejste si jistí? Zavolejte nám: <a href="tel:+420602702803">+420 602 702 803</a></p>
