@@ -1502,7 +1502,7 @@ window.SITE_MEDIA = {
     var pp=vid.play(); if(pp&&pp.catch)pp.catch(function(){});
     ["loadeddata","canplay"].forEach(function(ev){vid.addEventListener(ev,function(){var p=vid.play();if(p&&p.catch)p.catch(function(){});});}); }
 
-  var t = useFade ? {k:200,c:550,s:900,go:2600} : {k:250,c:700,s:1100,go:3400};
+  var t = useFade ? {k:400,c:1100,s:1800,go:5200} : {k:500,c:1400,s:2200,go:6800};
   var timers=[]; function later(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
   requestAnimationFrame(function(){ if(scrim)scrim.classList.add("show"); });
   later(function(){K&&K.classList.add("show");},t.k);
