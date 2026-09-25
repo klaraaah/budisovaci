@@ -405,6 +405,8 @@ header.scrolled .nav{height:66px}
 .hist-cell .hist-sq{margin:0 auto}
 .hist-toggle{margin-top:var(--s6)}
 .hist-note{margin-top:var(--s5);font-size:.85rem;color:var(--ink-3)}
+.hist-note a{color:var(--ink-3);border-bottom:1px solid var(--line-2);padding-bottom:1px;transition:.25s}
+.hist-note a:hover{color:var(--brand);border-color:var(--brand)}
 .vote{padding:var(--s11) 0 var(--s10);background:var(--paper-2)}
 .vote-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:var(--s8)}
 .vcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:var(--s6);
@@ -1122,6 +1124,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
 
     <button class="btn btn-line hist-toggle" id="hist-toggle" type="button">Zobrazit všech <span id="hist-total">285</span> kandidátů <span class="arw">→</span></button>
     <p class="hist-note">Zdroj: přehled kandidatur a mandátů zpracovaný pro potřeby kampaně, na základě veřejných výsledků voleb do zastupitelstva městyse Budišov.</p>
+    <p class="hist-note">Data čerpána z výsledků voleb do zastupitelstva Městyse Budišov na <a href="https://www.volby.cz" target="_blank" rel="noopener">www.volby.cz</a> (v rámci shody jmen nelze v tomto případě rozlišovat jednotlivé kandidáty, tzn. může dojít k nepřesnosti).</p>
   </div>
 </section>
 <!-- ============ NOVINY (listování, kliknutím stažení) ============ -->
