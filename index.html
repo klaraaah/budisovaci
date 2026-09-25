@@ -663,10 +663,13 @@ html.intro-armed .hero-copy-inner{opacity:0;animation:none}
 /* ============================================================================
    BUDIŠOVÁCI — komponenty (logo, o nás, tým, kandidátka, checkbox)
    ============================================================================ */
-/* logo v hlavičce */
-.brand-logo{height:38px;width:auto;display:block;transition:height .35s ease}
-header.scrolled .brand-logo{height:32px}
-@media(max-width:760px){.brand-logo{height:32px}}
+/* logo v hlavičce — mírně zvětšeno; malý posun dolů (translateY) opticky
+   vyrovnává logo, protože tenký podpis "Budišov nás spojuje" pod srdíčkem
+   je vizuálně lehčí než tučný nápis nahoře, takže bez posunu logo působí,
+   že sedí výš, než je střed lišty (nejvíc znát na malé mobilní výšce). */
+.brand-logo{height:42px;width:auto;display:block;transition:height .35s ease,transform .35s ease;transform:translateY(2px)}
+header.scrolled .brand-logo{height:34px;transform:translateY(1.5px)}
+@media(max-width:760px){.brand-logo{height:36px;transform:translateY(2.5px)}}
 
 /* ---- O NÁS ---- */
 .about{padding:var(--s11) 0 var(--s8)}
