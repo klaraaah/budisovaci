@@ -799,6 +799,7 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
       <div class="hero-actions">
         <a href="#program" class="btn btn-primary">Prohlédnout program <span class="arw">→</span></a>
         <a href="#jak-volit" class="btn btn-ghost">Jak správně volit</a>
+        <a href="#kontakt" class="btn btn-ghost" id="hero-idea-link">Napište nám, co vás trápí</a>
       </div>
     </div>
   </div>
@@ -1455,6 +1456,16 @@ window.SITE_MEDIA = {
       it.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); }
       });
+    });
+  }
+
+  /* ---------- hero CTA "napište nám, co vás trápí" -> doscroll a fokus do zprávy ---------- */
+  var heroIdeaLink = $("#hero-idea-link");
+  if (heroIdeaLink) {
+    heroIdeaLink.addEventListener("click", function () {
+      var msg = $("#cz");
+      if (msg) { setTimeout(function () { msg.focus(); }, 650); }
+      if (window.trackEvent) window.trackEvent("hero_idea_click", {});
     });
   }
 
