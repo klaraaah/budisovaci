@@ -589,17 +589,8 @@ form button[type=submit] .btn-spin{display:inline-block;width:14px;height:14px;m
   animation:btnspin .7s linear infinite}
 @keyframes btnspin{to{transform:rotate(360deg)}}
 
-/* ============ SOCIÁLNÍ SÍTĚ (telefon s živým FB feedem, v kontaktech) ============ */
+/* ============ SOCIÁLNÍ SÍTĚ (ikonky v kontaktech) ============ */
 .soc-item{border-bottom:none !important}
-.soc-note{margin-top:8px;font-size:.88rem;color:var(--ink-3)}
-.phone-feed{margin-top:var(--s5)}
-.device{position:relative;width:220px;max-width:100%;aspect-ratio:280/560;background:var(--ink-bg);
-  border-radius:26px;padding:9px;box-shadow:0 16px 36px -16px rgba(10,39,64,.3)}
-.device .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:72px;height:14px;
-  background:var(--ink-bg);border-radius:0 0 9px 9px;z-index:2}
-.device .screen{position:relative;width:100%;height:100%;background:var(--paper);border-radius:18px;
-  overflow:hidden;padding-top:16px;display:flex;flex-direction:column;align-items:center}
-.social-noscript{font-size:.85rem;color:var(--ink-2);padding:0 12px}
 
 /* ============ FOOTER ============ */
 footer{background:var(--ink-bg);color:#fff;padding:var(--s9) 0 var(--s6)}
@@ -776,8 +767,6 @@ form .chk input{width:18px;height:18px;accent-color:var(--brand);flex:0 0 auto}
 </head>
 <body>
 <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&amp;version=v19.0"></script>
 <script>/* intro arm — hned, ať neproblikne nav/claim při první návštěvě */
 try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList.add('intro-armed');}catch(e){}</script>
 <!-- ============ FILMOVÝ VSTUP (intro video) ============ -->
@@ -1204,23 +1193,6 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
           <div class="v soc">
             <a href="https://www.facebook.com/profile.php?id=61594722493117&amp;locale=cs_CZ" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.25-1.5 1.56-1.5H16.5V4.3C16.17 4.25 15.1 4.15 13.85 4.15 11.25 4.15 9.5 5.73 9.5 8.2v2.3H7v3h2.5V21h4z"/></svg>Facebook</a>
             <a href="https://www.instagram.com/budisovaci/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.1" cy="6.9" r="1.1"/></svg>Instagram</a>
-          </div>
-          <div class="phone-feed">
-            <div class="device">
-              <div class="notch"></div>
-              <div class="screen" id="fb-feed">
-                <div class="fb-page"
-                  data-href="https://www.facebook.com/profile.php?id=61594722493117"
-                  data-tabs="timeline" data-width="280" data-height="460"
-                  data-small-header="true" data-adapt-container-width="true"
-                  data-hide-cover="false" data-show-facepile="false">
-                  <blockquote cite="https://www.facebook.com/profile.php?id=61594722493117" class="fb-xfbml-parameters">
-                    <a href="https://www.facebook.com/profile.php?id=61594722493117">Budišováci</a>
-                  </blockquote>
-                </div>
-                <noscript><p class="social-noscript">Pro zobrazení příspěvků povolte JavaScript, nebo nás najděte přímo na <a href="https://www.facebook.com/profile.php?id=61594722493117&amp;locale=cs_CZ" target="_blank" rel="noopener">Facebooku</a>.</p></noscript>
-              </div>
-            </div>
           </div>
         </div>
       </div>
