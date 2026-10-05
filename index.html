@@ -236,6 +236,10 @@ header.scrolled .nav{height:66px}
 .nav-links a:hover,.nav-links a[aria-current="true"]{color:var(--brand);background:var(--paper-2)}
 .nav-cta{margin-left:10px;background:var(--brand);color:#fff;font-weight:600;font-size:.9rem;padding:11px 18px;border-radius:var(--r);transition:.25s}
 .nav-cta:hover{transform:translateY(-1px);background:var(--brand-d)}
+.nav-soc{display:flex;gap:14px;margin-left:8px}
+.nav-soc a{color:var(--brand);display:flex;opacity:.85;transition:.2s}
+.nav-soc a:hover{opacity:1}
+.nav-soc .ico{width:18px;height:18px}
 .burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px;padding:11px}
 .burger span{display:block;height:2px;background:var(--ink);border-radius:2px;margin:5px 0;transition:.3s}
 .burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -555,6 +559,7 @@ header.scrolled .nav{height:66px}
 .cinfo .v a:hover{border-color:var(--brand);color:var(--brand)}
 .cinfo .v.soc{display:flex;gap:var(--s5)}
 .cinfo .v.soc a{display:inline-flex;align-items:center;gap:7px;border-bottom:1.5px solid var(--line-2)}
+.cinfo .v.soc .ico{color:var(--brand)}
 .ico{width:18px;height:18px;fill:currentColor;flex:0 0 auto}
 .form-intro{font-size:1.08rem;font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:var(--s6);
   padding-bottom:var(--s5);border-bottom:1px solid var(--line)}
@@ -610,8 +615,8 @@ footer ul a:hover{color:var(--brand)}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s3);padding-top:var(--s5);
   font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:rgba(255,255,255,.45)}
 .foot-soc{display:flex;gap:var(--s4)}
-.foot-soc a{color:rgba(255,255,255,.6);display:flex;transition:.25s}
-.foot-soc a:hover{color:var(--brand)}
+.foot-soc a{color:var(--brand);display:flex;transition:.25s;opacity:.85}
+.foot-soc a:hover{opacity:1}
 .foot-soc .ico{width:19px;height:19px}
 .disclaimer{background:var(--ink-bg);color:rgba(255,255,255,.4);text-align:center;font-family:var(--mono);
   font-size:.66rem;letter-spacing:.06em;padding:0 var(--pad) var(--s6)}
@@ -628,7 +633,7 @@ footer ul a:hover{color:var(--brand)}
     padding:12px 20px 24px;gap:0;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
   .nav-links.open{transform:translateY(0)}
   .nav-links a{color:var(--ink)!important;padding:15px 6px;font-size:1.1rem;border-bottom:1px solid var(--line)}
-  .nav-cta{display:none}.burger{display:block}
+  .nav-cta{display:none}.nav-soc{display:none}.burger{display:block}
   /* HERO na mobilu: fotka přes celou plochu (bez videa kvůli datům), silnější ztmavení */
   .hero{min-height:auto}
   .hero-media::after{background:linear-gradient(180deg,rgba(7,28,47,.55) 0%,rgba(7,28,47,.78) 45%,rgba(7,28,47,.95) 100%)}
@@ -801,6 +806,10 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
       <a href="#kontakt" class="nav-cta">Přidejte se</a>
+      <div class="nav-soc">
+        <a href="https://www.facebook.com/profile.php?id=61594722493117&amp;locale=cs_CZ" target="_blank" rel="noopener" aria-label="Facebook Budišováci"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.25-1.5 1.56-1.5H16.5V4.3C16.17 4.25 15.1 4.15 13.85 4.15 11.25 4.15 9.5 5.73 9.5 8.2v2.3H7v3h2.5V21h4z"/></svg></a>
+        <a href="https://www.instagram.com/budisovaci/" target="_blank" rel="noopener" aria-label="Instagram Budišováci"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.1" cy="6.9" r="1.1"/></svg></a>
+      </div>
     </nav>
   </div>
 </header>
