@@ -2092,12 +2092,16 @@ window.GOOGLE_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbybz3-_Gp
     var today0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var start0 = new Date(start.getFullYear(), start.getMonth(), start.getDate());
     var d = Math.round((start0 - today0) / 86400000);
-    b.textContent = String(d);
-    s.textContent = (d === 1 ? "den" : (d >= 2 && d <= 4 ? "dny" : "dní")) + " do voleb";
+    if (d <= 0) {
+      b.textContent = "Dnes"; s.textContent = "začínají volby";
+    } else {
+      b.textContent = String(d);
+      s.textContent = (d === 1 ? "den" : (d >= 2 && d <= 4 ? "dny" : "dní")) + " do voleb";
+    }
   } else if (now < end) {
     b.textContent = "Dnes"; s.textContent = "probíhají volby";
   } else {
-    b.textContent = "Děkujeme"; s.textContent = "za vaše hlasy";
+    li.style.display = "none";
   }
 })();
 
