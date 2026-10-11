@@ -891,8 +891,8 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
     </div>
     <p class="ev-empty" id="ev-empty" hidden>Teď zrovna nemáme naplánovanou žádnou akci — sledujte nás, ať vám příští neuteče.</p>
     <div class="ev-past-wrap" id="ev-past-wrap" hidden>
-      <button class="btn btn-line ev-past-toggle" data-target="ev-past" aria-expanded="true">Skrýt proběhlé akce <span class="arw">→</span></button>
-      <div class="ev-list ev-list-past" id="ev-past"></div>
+      <button class="btn btn-line ev-past-toggle" data-target="ev-past" aria-expanded="false">Zobrazit proběhlé akce <span class="arw">→</span></button>
+      <div class="ev-list ev-list-past" id="ev-past" hidden></div>
     </div>
   </div>
 </section>
@@ -1517,7 +1517,7 @@ window.SITE_MEDIA = {
       pastWrap.hidden = false;
       if (pastToggle) {
         var n = pastList.children.length;
-        pastToggle.childNodes[0].nodeValue = "Skrýt proběhlé akce (" + n + ") ";
+        pastToggle.childNodes[0].nodeValue = "Zobrazit proběhlé akce (" + n + ") ";
       }
     }
     if (!evUpcoming.children.length) {
