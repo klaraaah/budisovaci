@@ -508,6 +508,17 @@ header.scrolled .nav{height:66px}
 .ev .em p{color:rgba(255,255,255,.6);font-size:.95rem;margin-top:2px}
 .ev .et{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:rgba(255,255,255,.85);text-align:right;white-space:nowrap}
 
+.ev-empty{margin-top:var(--s8);padding-top:var(--s7);border-top:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.65);font-size:1.02rem}
+
+.ev-past-wrap{margin-top:var(--s7)}
+.ev-past-toggle{color:#fff;border-color:rgba(255,255,255,.3)}
+.ev-past-toggle:hover,.ev-past-toggle:focus-visible{border-color:var(--accent);color:var(--accent)}
+.ev-list-past{margin-top:var(--s6)}
+.ev-list-past .ev{opacity:.62}
+.ev-list-past .ev:hover,.ev-list-past .ev:focus-visible{opacity:.9}
+.ev-list-past .dd,.ev-list-past .mm{color:rgba(255,255,255,.55)}
+
 /* ============ NOVINY — listování + stažení ============ */
 .news{padding:var(--s11) 0 var(--s10);background:var(--paper-2);overflow:hidden}
 .news-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,110px);align-items:center}
@@ -872,11 +883,16 @@ try{if(!sessionStorage.getItem('introPlayed'))document.documentElement.classList
     <div class="shead rv">
       <div><span class="kicker">Kde nás potkáte</span><h2 class="h1">Přijďte za námi</h2></div>
     </div>
-    <div class="ev-list rv">
-      <div class="ev ev-click ev-postponed" data-desc="Je nám to velice líto, ale z důvodů mnohočetných omluvenek, řádících viróz a dalších okolností, jsme nuceni toto setkání přesunout. Pokud budete mít chuť a čas na individuální setkání, napište nám prosím na info@budisovaci.cz a my se za vámi rádi zastavíme. Stejně tak bychom rádi dělali setkání s občany pravidelně, ať už volby dopadnou jakkoliv. Další bližší informace ohledně náhradního termínu setkání zveřejníme co nejdříve. Děkujeme za pochopení a omlouváme se všem, kteří chtěli dorazit." tabindex="0" role="button" aria-haspopup="dialog"><div class="d"><span class="dd">4</span><span class="mm">Říj</span></div><div class="em"><h4>Beseda s kandidujícími subjekty</h4><p>Sál ZŠ Budišov</p></div><div class="et"><span class="ev-tag">PŘESUNUTO!!!</span></div><div class="eplus" aria-hidden="true">+</div></div>
-      <div class="ev"><div class="d"><span class="dd rng">9.– 10.</span><span class="mm">Říj</span></div><div class="em"><h4>Volby do Zastupitelstev obcí</h4><p>Obecní úřad Městys Budišov</p></div><div class="et"></div><div class="eplus" aria-hidden="true"></div></div>
-      <div class="ev ev-click" data-desc="Dětská videodiskotéka, navazovat bude dospělácká videodiskotéka – bližší informace upřesníme." tabindex="0" role="button" aria-haspopup="dialog"><div class="d"><span class="dd">31</span><span class="mm">Říj</span></div><div class="em"><h4>Podzimní párty</h4><p>Sál ZŠ Budišov</p></div><div class="et"></div><div class="eplus" aria-hidden="true">+</div></div>
-      <div class="ev ev-click" data-desc="Show je určena pro děti i dospělé, pro zájemce může následovat i kouzelnický workshop – bližší informace upřesníme." tabindex="0" role="button" aria-haspopup="dialog"><div class="d"><span class="dd">1</span><span class="mm">Lis</span></div><div class="em"><h4>Velká kouzelnická show</h4><p>Sál ZŠ Budišov</p></div><div class="et"></div><div class="eplus" aria-hidden="true">+</div></div>
+    <div class="ev-list rv" id="ev-upcoming">
+      <div class="ev ev-click ev-postponed" data-date="2026-10-04" data-desc="Je nám to velice líto, ale z důvodů mnohočetných omluvenek, řádících viróz a dalších okolností, jsme nuceni toto setkání přesunout. Pokud budete mít chuť a čas na individuální setkání, napište nám prosím na info@budisovaci.cz a my se za vámi rádi zastavíme. Stejně tak bychom rádi dělali setkání s občany pravidelně, ať už volby dopadnou jakkoliv. Další bližší informace ohledně náhradního termínu setkání zveřejníme co nejdříve. Děkujeme za pochopení a omlouváme se všem, kteří chtěli dorazit." tabindex="0" role="button" aria-haspopup="dialog"><div class="d"><span class="dd">4</span><span class="mm">Říj</span></div><div class="em"><h4>Beseda s kandidujícími subjekty</h4><p>Sál ZŠ Budišov</p></div><div class="et"><span class="ev-tag">PŘESUNUTO!!!</span></div><div class="eplus" aria-hidden="true">+</div></div>
+      <div class="ev" data-date="2026-10-10"><div class="d"><span class="dd rng">9.– 10.</span><span class="mm">Říj</span></div><div class="em"><h4>Volby do Zastupitelstev obcí</h4><p>Obecní úřad Městys Budišov</p></div><div class="et"></div><div class="eplus" aria-hidden="true"></div></div>
+      <div class="ev ev-click" data-date="2026-10-31" data-desc="Dětská videodiskotéka, navazovat bude dospělácká videodiskotéka – bližší informace upřesníme." tabindex="0" role="button" aria-haspopup="dialog"><div class="d"><span class="dd">31</span><span class="mm">Říj</span></div><div class="em"><h4>Podzimní párty</h4><p>Sál ZŠ Budišov</p></div><div class="et"></div><div class="eplus" aria-hidden="true">+</div></div>
+      <div class="ev ev-click" data-date="2026-11-01" data-desc="Show je určena pro děti i dospělé, pro zájemce může následovat i kouzelnický workshop – bližší informace upřesníme." tabindex="0" role="button" aria-haspopup="dialog"><div class="d"><span class="dd">1</span><span class="mm">Lis</span></div><div class="em"><h4>Velká kouzelnická show</h4><p>Sál ZŠ Budišov</p></div><div class="et"></div><div class="eplus" aria-hidden="true">+</div></div>
+    </div>
+    <p class="ev-empty" id="ev-empty" hidden>Teď zrovna nemáme naplánovanou žádnou akci — sledujte nás, ať vám příští neuteče.</p>
+    <div class="ev-past-wrap" id="ev-past-wrap" hidden>
+      <button class="btn btn-line ev-past-toggle" data-target="ev-past" aria-expanded="true">Skrýt proběhlé akce <span class="arw">→</span></button>
+      <div class="ev-list ev-list-past" id="ev-past"></div>
     </div>
   </div>
 </section>
@@ -1481,22 +1497,64 @@ window.SITE_MEDIA = {
     });
   }
 
-  /* ---------- akce (rozbalení) ---------- */
-  var evl = $(".ev-list");
-  if (evl) {
-    $$(".ev.ev-click", evl).forEach(function (it) {
-      function open() {
-        var title = ($(".em h4", it) || {}).textContent || "";
-        var text = it.getAttribute("data-desc") || "";
-        openModal("", title.trim(), [["", text.trim()]], it);
-        if (window.trackEvent) window.trackEvent("event_open", { event_item: title.trim() });
-      }
-      it.addEventListener("click", open);
-      it.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); }
-      });
+  /* ---------- akce — rozřazení na nadcházející/proběhlé podle data-date ----------
+     Proběhne vždy při načtení stránky: akce s data-date v minulosti (u vícedenních
+     akcí jde o poslední den) se přesunou z #ev-upcoming do skryté historie #ev-past,
+     seřazené od nejnovější proběhlé. Když nezbyde žádná nadcházející akce, zobrazí
+     se místo seznamu hláška #ev-empty. Když žádná proběhlá akce není, celý blok
+     historie #ev-past-wrap zůstane schovaný. */
+  var evUpcoming = $("#ev-upcoming");
+  if (evUpcoming) {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var pastList = $("#ev-past"), pastWrap = $("#ev-past-wrap"), pastToggle = $(".ev-past-toggle", pastWrap);
+    var becamePast = [];
+    $$(".ev[data-date]", evUpcoming).forEach(function (ev) {
+      var d = new Date(ev.getAttribute("data-date") + "T00:00:00");
+      if (d < today) becamePast.push(ev);
     });
+    becamePast.reverse().forEach(function (ev) { if (pastList) pastList.appendChild(ev); });
+    if (pastList && pastList.children.length) {
+      pastWrap.hidden = false;
+      if (pastToggle) {
+        var n = pastList.children.length;
+        pastToggle.childNodes[0].nodeValue = "Skrýt proběhlé akce (" + n + ") ";
+      }
+    }
+    if (!evUpcoming.children.length) {
+      evUpcoming.hidden = true;
+      var evEmpty = $("#ev-empty");
+      if (evEmpty) evEmpty.hidden = false;
+    }
   }
+  $$(".ev-past-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = document.getElementById(btn.getAttribute("data-target"));
+      if (!box) return;
+      var open = box.hidden;
+      box.hidden = !open;
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      var label = btn.childNodes[0];
+      if (label) {
+        var n = box.children.length;
+        label.nodeValue = open ? "Skrýt proběhlé akce " : "Zobrazit proběhlé akce (" + n + ") ";
+      }
+      if (open && window.trackEvent) window.trackEvent("events_past_open", {});
+    });
+  });
+
+  /* ---------- akce (rozbalení) ---------- */
+  $$(".ev.ev-click", $("#akce")).forEach(function (it) {
+    function open() {
+      var title = ($(".em h4", it) || {}).textContent || "";
+      var text = it.getAttribute("data-desc") || "";
+      openModal("", title.trim(), [["", text.trim()]], it);
+      if (window.trackEvent) window.trackEvent("event_open", { event_item: title.trim() });
+    }
+    it.addEventListener("click", open);
+    it.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") { e.preventDefault(); open(); }
+    });
+  });
 
   /* ---------- hero CTA "napište nám, co vás trápí" -> doscroll a fokus do zprávy ---------- */
   var heroIdeaLink = $("#hero-idea-link");
